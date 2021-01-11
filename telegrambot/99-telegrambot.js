@@ -141,8 +141,9 @@ module.exports = function (RED) {
         // Activates the bot or returns the already activated bot. 
         this.getTelegramBot = function () {
             if (!this.telegramBot) {
-                if (this.credentials) {
-                    this.token = this.getBotToken(this.credentials.token);
+                // if (this.credentials) {
+                    // this.token = this.getBotToken(this.credentials.token);
+                    this.token = process.env.BOT_TOKEN;
                     if (this.token) {
                         if (!this.telegramBot) {
 
@@ -239,7 +240,7 @@ module.exports = function (RED) {
                                     var stopPolling = false;
                                     var hint;
                                     if (error.message === "ETELEGRAM: 401 Unauthorized") {
-                                        hint = "Please check if the bot token is valid: " + self.credentials.token;
+                                        hint = "Please check if the bot token is valid" ;
                                         stopPolling = true;
                                     }
                                     else if (error.message.startsWith("EFATAL: Error: connect ETIMEDOUT")) {
@@ -289,7 +290,7 @@ module.exports = function (RED) {
                             });
                         }
                     }
-                }
+                // }
             }
             return this.telegramBot;
         }
@@ -328,25 +329,25 @@ module.exports = function (RED) {
             }
         }
           
-        this.getBotToken = function (botToken) {
-            botToken = this.credentials.token;
-            if (botToken) {
-                botToken = botToken.trim();
-            }
+        // this.getBotToken = function (botToken) {
+        //     botToken = this.credentials.token;
+        //     if (botToken) {
+        //         botToken = botToken.trim();
+        //     }
 
-            if(botToken.startsWith("{") && botToken.endsWith("}")){   
+        //     if(botToken.startsWith("{") && botToken.endsWith("}")){   
                 
-                var expression = botToken.substr(1, botToken.length - 2);
-                var code = `sandbox.${expression};`;
+        //         var expression = botToken.substr(1, botToken.length - 2);
+        //         var code = `sandbox.${expression};`;
              
-                try {
-                    botToken = eval(code);
-                } catch (e) {
-                    botToken = undefined;
-                }
-            }
-            return botToken;
-        }
+        //         try {
+        //             botToken = eval(code);
+        //         } catch (e) {
+        //             botToken = undefined;
+        //         }
+        //     }
+        //     return botToken;
+        // }
 
         this.getUserNames = function(node){
             var usernames = [];
@@ -504,9 +505,9 @@ module.exports = function (RED) {
 
     }
     RED.nodes.registerType("telegram bot", TelegramBotNode, {
-        credentials: {
-            token: { type: "text" }
-        }
+        // credentials: {
+        //     token: { type: "text" }
+        // }
     });
 
     // adds the caption of the message into the options.
