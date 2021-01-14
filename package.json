@@ -3,11 +3,11 @@
     "version": "1.9.6",
     "description": "Telegram bot nodes for Node-RED",
     "dependencies": {
-		"bluebird": "^3.5.1",
-        "node-telegram-bot-api" : "^0.50.0",
-		"socks5-https-client" : "1.2.1"
+        "bluebird": "^3.7.2",
+        "node-telegram-bot-api": "^0.50.0",
+        "socks5-https-client": "^1.2.1"
     },
-    "node-red" : {
+    "node-red": {
         "nodes": {
             "telegrambot": "telegrambot/99-telegrambot.js"
         }
@@ -17,9 +17,9 @@
         "telegram",
         "bot"
     ],
-    "repository" : {
-        "type" : "git",
-        "url" : "https://github.com/windkh/node-red-contrib-telegrambot"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/windkh/node-red-contrib-telegrambot"
     },
     "author": "Karl-Heinz Wind",
     "license": "MIT"
